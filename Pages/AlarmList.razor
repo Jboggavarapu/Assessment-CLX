@@ -1,0 +1,48 @@
+﻿@page "/alarmlist"
+@inherits AlarmListBase
+
+<h3>Alarm List</h3>
+<a class="btn" href="AddAlarm"> AddAlarm</a>
+<a class="btn" href="alarmlist"> Refresh</a>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                Time
+            </th>
+            <th scope="col">
+                Alarm
+            </th>
+            <th scope="col">
+                Equipment
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Alarms)
+        {
+            <tr>
+                <td>
+
+                    @item.Time
+
+                </td>
+                <td>
+
+                    @item.Alarm
+
+                </td>
+                <td>
+
+                    @item.Equipment
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+   
+}

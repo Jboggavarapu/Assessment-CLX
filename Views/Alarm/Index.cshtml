@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model IEnumerable<Assessment.Models.AlarmModel>
+
+@{
+    <table>
+        <thead>
+            <tr>
+                <td>
+                    Time
+                </td>
+                <td>
+                    Alarm
+                </td>
+                <td>
+                    Equipment
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>
+                        @x.Time
+                    </td>
+                    <td>
+                        @x.Alarm
+                    </td>
+                    <td>
+                        @x.Equipment
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+

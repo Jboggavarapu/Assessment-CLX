@@ -1,0 +1,39 @@
+﻿@page "/AddAlarm"
+@*@inject HttpClient httpClient;*@
+@inject NavigationManager NavigationManager
+@using System.Net.Http.Formatting;
+
+
+<h3>Add Alarm</h3>
+<EditForm Model="@newAlarm" OnSubmit="@SaveAlarm">
+    <div class="form-group">
+        <label for="Time">
+            Time
+        </label>
+        <InputDate @bind-Value="@newAlarm.Time" required />
+
+        <label for="Alarm">
+            Alarm
+        </label>
+        <InputText @bind-Value="@newAlarm.Alarm" required></InputText>
+        <label for="Equipment">
+            Equipment
+        </label>
+        <InputText @bind-Value="@newAlarm.Equipment" required></InputText>
+    </div>
+    <button class="btn btn-primary">Submit </button>
+</EditForm>
+
+@code {
+    Assessment.Models.AlarmModel newAlarm = new AlarmModel();
+    private async Task SaveAlarm()
+    {
+        HttpClient httpClient = new HttpClient();
+        httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+        await httpClient.PostAsJsonAsync("https://localhost:44346/api/Alarm", newAlarm);
+        NavigationManager.NavigateTo("/alarmlist");
+
+    }
+
+
+}
